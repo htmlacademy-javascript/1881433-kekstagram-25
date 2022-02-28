@@ -1,8 +1,8 @@
 const arrayId = [
   2, 18, 19,  1, 23, 24, 14,  5,
- 12,  9,  6, 22, 10,  8, 17, 21,
+  12,  9,  6, 22, 10,  8, 17, 21,
   7, 25, 20,  3,  4, 16, 11, 15,
- 13
+  13
 ];
 
 const arrayUrl = [
@@ -52,8 +52,8 @@ const descriptions = [
 const arrayLikes = [
   247, 246,  25, 231, 112, 225, 208,
   176, 193,  60, 234, 164,  65, 214,
-   36, 167, 103, 223,  68,  17, 195,
-   69, 132, 140, 146
+  36, 167, 103, 223,  68,  17, 195,
+  69, 132, 140, 146
 ];
 
 const ava = [
@@ -115,31 +115,26 @@ const fullContainer = [
 const COMMENTS_COUNT = 25;
 
 const getMyRandom = (a, b) => {
-  minimum = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  maximum = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+  const minimum = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const maximum = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
   return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 };
 
-const getRandomMyArrayElement = (elements) => {
-  return elements[getMyRandom(0, elements.length - 1)];
-};
+const getRandomMyArrayElement = (elements) => elements[getMyRandom(0, elements.length - 1)];
 
-const createComment = () => {
-  return {
-    id: getRandomMyArrayElement(arrayId),
-    photo: getRandomMyArrayElement(arrayUrl),
-    description: getRandomMyArrayElement(descriptions),
-    likes: getRandomMyArrayElement(arrayLikes),
-    message: getRandomMyArrayElement(fullContainer),
-    avatar: getRandomMyArrayElement(ava),
-    Name: getRandomMyArrayElement(names),
-  };
-};
+const createComment = () => ({
+  id: getRandomMyArrayElement(arrayId),
+  photo: getRandomMyArrayElement(arrayUrl),
+  description: getRandomMyArrayElement(descriptions),
+  likes: getRandomMyArrayElement(arrayLikes),
+  message: getRandomMyArrayElement(fullContainer),
+  avatar: getRandomMyArrayElement(ava),
+  Name: getRandomMyArrayElement(names),
+});
 
+/* eslint-disable no-unused-vars */
 const comments = Array.from({length: COMMENTS_COUNT}, createComment);
+/* eslint-disable no-unused-vars */
 
 //console.log(comments);
-
-
-
 
