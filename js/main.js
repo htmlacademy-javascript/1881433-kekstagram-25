@@ -46,7 +46,7 @@ const DESCRIPTIONS = [
   'Лайк)',
 ];
 
-const getRandomDescription = () => {
+const descriptionIndex = () => {
   const descriptor =  getRandomNumber(0, DESCRIPTIONS.length - 1);
   return DESCRIPTIONS[descriptor];
 };
@@ -64,7 +64,7 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const getRandomMessage = () => {
+const messageIndex = () => {
   const messenger =  getRandomNumber(0, MESSAGES.length - 1);
   return MESSAGES[messenger];
 };
@@ -81,28 +81,30 @@ const NAMES = [
   'Фёдор'
 ];
 
-const getRandomName = () => {
+const nameIndex = () => {
   const pointer =  getRandomNumber(0, NAMES.length - 1);
   return NAMES[pointer];
 };
 
-const COUNT_OF_FULL_COMMENTS = 25;
+const createCommentsArray = () => {
+  const createcommentsObject = () => {
+    const createObject = {id: getRandomId(), avatar: getRandomAvatarUrl(), message: messageIndex(), name: nameIndex()};
+    return createObject;
+  };
+  const commentsArray = Array.from({length: getRandomId()}, createcommentsObject);
+  return commentsArray;
+};
 
 const createFullComment = () => ({
   id: getRandomId(),
   url: getRandomUrl(),
-  description: getRandomDescription(),
+  description: descriptionIndex(),
   likes: getRandomLikes(),
-  comments: {
-    id: getRandomId(),
-    avatar: getRandomAvatarUrl(),
-    message: getRandomMessage(),
-    name: getRandomName()
-  },
+  comments: createCommentsArray()
 });
 
 /* eslint-disable no-unused-vars */
-const createArrayComments = Array.from({length: COUNT_OF_FULL_COMMENTS}, createFullComment);
+const createArrayComments = Array.from({length: getRandomId()}, createFullComment);
 /* eslint-disable no-unused-vars */
 
 //console.log(createArrayComments);
