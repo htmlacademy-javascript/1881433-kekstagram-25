@@ -1,27 +1,24 @@
-const arrayId = [
-  2, 18, 19,  1, 23, 24, 14,  5,
-  12,  9,  6, 22, 10,  8, 17, 21,
-  7, 25, 20,  3,  4, 16, 11, 15,
-  13
-];
+const getRandomNumber = (a, b) => {
+  const minimum = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const maximum = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
+  const result = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+  return result;
+};
 
-const arrayUrl = [
-  'photo/17.jpg', 'photo/8.jpg',
-  'photo/14.jpg', 'photo/5.jpg',
-  'photo/24.jpg', 'photo/18.jpg',
-  'photo/10.jpg', 'photo/13.jpg',
-  'photo/15.jpg', 'photo/19.jpg',
-  'photo/21.jpg', 'photo/9.jpg',
-  'photo/23.jpg', 'photo/2.jpg',
-  'photo/11.jpg', 'photo/16.jpg',
-  'photo/20.jpg', 'photo/6.jpg',
-  'photo/12.jpg', 'photo/3.jpg',
-  'photo/7.jpg',  'photo/4.jpg',
-  'photo/22.jpg', 'photo/1.jpg',
-  'photo/25.jpg'
-];
+const MIN_ID = 1;
+const MAX_ID = 25;
+const getRandomId = () => getRandomNumber(MIN_ID, MAX_ID);
 
-const descriptions = [
+const MIN_URL_ID = 1;
+const MAX_URL_ID = 25;
+const getRandomUrl = () => `photos/${getRandomNumber(MIN_URL_ID, MAX_URL_ID)}.jpg`;
+
+
+const MIN_AVATAR_ID = 1;
+const MAX_AVATAR_ID = 6;
+const getRandomAvatarUrl = () => `img/avatar-${getRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID)}.svg`;
+
+const DESCRIPTIONS = [
   'Ого!',
   'Красота!',
   'Всегда бы так)',
@@ -49,30 +46,30 @@ const descriptions = [
   'Лайк)',
 ];
 
-const arrayLikes = [
-  247, 246,  25, 231, 112, 225, 208,
-  176, 193,  60, 234, 164,  65, 214,
-  36, 167, 103, 223,  68,  17, 195,
-  69, 132, 140, 146
+const descriptionIndex = () => {
+  const descriptor =  getRandomNumber(0, DESCRIPTIONS.length - 1);
+  return DESCRIPTIONS[descriptor];
+};
+
+const MIN_LIKES = 15;
+const MAX_LIKES = 250;
+const getRandomLikes = () => getRandomNumber(MIN_LIKES, MAX_LIKES);
+
+const MESSAGES = [
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const ava = [
-  'img/avatar-6.svg', 'img/avatar-3.svg',
-  'img/avatar-4.svg', 'img/avatar-1.svg',
-  'img/avatar-1.svg', 'img/avatar-6.svg',
-  'img/avatar-1.svg', 'img/avatar-6.svg',
-  'img/avatar-3.svg', 'img/avatar-4.svg',
-  'img/avatar-5.svg', 'img/avatar-4.svg',
-  'img/avatar-3.svg', 'img/avatar-3.svg',
-  'img/avatar-1.svg', 'img/avatar-6.svg',
-  'img/avatar-4.svg', 'img/avatar-3.svg',
-  'img/avatar-5.svg', 'img/avatar-6.svg',
-  'img/avatar-1.svg', 'img/avatar-4.svg',
-  'img/avatar-5.svg', 'img/avatar-5.svg',
-  'img/avatar-5.svg'
-];
+const messageIndex = () => {
+  const messenger =  getRandomNumber(0, MESSAGES.length - 1);
+  return MESSAGES[messenger];
+};
 
-const names = [
+const NAMES = [
   'Михаил',    'Настя',     'Татьяна',
   'Степанида', 'Андрей',    'Роман',
   'Мария',     'Александр', 'Рита',
@@ -84,57 +81,30 @@ const names = [
   'Фёдор'
 ];
 
-const fullContainer = [
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
-  'Всё отлично!',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  'В целом всё неплохо. Но не всё.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Всё отлично!',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'В целом всё неплохо. Но не всё.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
-  'В целом всё неплохо. Но не всё.',
-  'Всё отлично!',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  'Всё отлично!',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.В конце концов это просто непрофессионально.',
-  'В целом всё неплохо. Но не всё.',
-  'Всё отлично!'
-];
-
-const COMMENTS_COUNT = 25;
-
-const getMyRandom = (a, b) => {
-  const minimum = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const maximum = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+const nameIndex = () => {
+  const pointer =  getRandomNumber(0, NAMES.length - 1);
+  return NAMES[pointer];
 };
 
-const getRandomMyArrayElement = (elements) => elements[getMyRandom(0, elements.length - 1)];
+const createCommentsArray = () => {
+  const createcommentsObject = () => {
+    const createObject = {id: getRandomId(), avatar: getRandomAvatarUrl(), message: messageIndex(), name: nameIndex()};
+    return createObject;
+  };
+  const commentsArray = Array.from({length: getRandomId()}, createcommentsObject);
+  return commentsArray;
+};
 
-const createComment = () => ({
-  id: getRandomMyArrayElement(arrayId),
-  photo: getRandomMyArrayElement(arrayUrl),
-  description: getRandomMyArrayElement(descriptions),
-  likes: getRandomMyArrayElement(arrayLikes),
-  message: getRandomMyArrayElement(fullContainer),
-  avatar: getRandomMyArrayElement(ava),
-  Name: getRandomMyArrayElement(names),
+const createFullComment = () => ({
+  id: getRandomId(),
+  url: getRandomUrl(),
+  description: descriptionIndex(),
+  likes: getRandomLikes(),
+  comments: createCommentsArray()
 });
 
 /* eslint-disable no-unused-vars */
-const comments = Array.from({length: COMMENTS_COUNT}, createComment);
+const createArrayComments = Array.from({length: getRandomId()}, createFullComment);
 /* eslint-disable no-unused-vars */
 
-//console.log(comments);
-
+//console.log(createArrayComments);
