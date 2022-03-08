@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   parser: '@typescript-eslint/parser',
   extends: ['react-app', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
   parserOptions: {
@@ -14,4 +14,4 @@ module.exports = {
           version: 'detect'
       }
   }
-};
+};*/
