@@ -1,17 +1,3 @@
-/* eslint-disable no-unused-vars */
-import {getRandomNumber,
-  getRandomId,
-  getRandomUrl,
-  getRandomAvatarUrl,
-  getRandomDescription,
-  getRandomName,
-  getRandomLikes,
-  getRandomMessage,
-  createCommentsArray,
-  createFullComment
-} from './util.js';
-/* eslint-disable no-unused-vars */
-
 export const MIN_ID = 1;
 export const MAX_ID = 25;
 
@@ -72,5 +58,3 @@ export const NAMES = [
   'Геннадий',  'Виктор',    'Павел',
   'Фёдор'
 ];
-
-export const createArrayComments = Array.from({length: getRandomId()}, createFullComment);
