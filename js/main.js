@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {createArrayComments} from './util.js';
+import {photos} from './util.js';
 /* eslint-disable no-unused-vars */
 
-//console.log(createArrayComments);
+//console.log(photos);
