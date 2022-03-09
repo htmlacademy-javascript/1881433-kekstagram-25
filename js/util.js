@@ -52,7 +52,7 @@ const createCommentsArray = () => {
   return commentsArray;
 };
 
-const createFullComment = () => ({
+const createPhoto = () => ({
   id: getRandomId(),
   url: getRandomUrl(),
   description: getRandomDescription(),
@@ -60,4 +60,4 @@ const createFullComment = () => ({
   comments: createCommentsArray()
 });
 
-export const createArrayComments = Array.from({length: getRandomId()}, createFullComment);
+export const photos = Array.from({length: getRandomId()}, createPhoto);
