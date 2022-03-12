@@ -21,5 +21,3 @@ const addFeatures = () => {
 };
 addFeatures();
 //console.log(addFeatures());
-
-
