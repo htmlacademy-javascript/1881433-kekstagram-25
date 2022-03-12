@@ -20,9 +20,9 @@ const getRandomNumber = (a, b) => {
   return result;
 };
 
-const getRandomId = () => getRandomNumber(MIN_ID, MAX_ID);
+export const getRandomId = () => getRandomNumber(MIN_ID, MAX_ID);
 
-const getRandomUrl = () => `photos/${getRandomNumber(MIN_URL_ID, MAX_URL_ID)}.jpg`;
+export const getRandomUrl = () => `photos/${getRandomNumber(MIN_URL_ID, MAX_URL_ID)}.jpg`;
 
 const getRandomAvatarUrl = () => `img/avatar-${getRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID)}.svg`;
 
@@ -36,14 +36,14 @@ const getRandomName = () => {
   return NAMES[nameIndex];
 };
 
-const getRandomLikes = () => getRandomNumber(MIN_LIKES, MAX_LIKES);
+export const getRandomLikes = () => getRandomNumber(MIN_LIKES, MAX_LIKES);
 
 const getRandomMessage = () => {
   const messageIndex =  getRandomNumber(0, MESSAGES.length - 1);
   return MESSAGES[messageIndex];
 };
 
-const createCommentsArray = () => {
+export const createCommentsArray = () => {
   const createcommentsObject = () => {
     const createObject = {id: getRandomId(), avatar: getRandomAvatarUrl(), message: getRandomMessage(), name: getRandomName()};
     return createObject;
