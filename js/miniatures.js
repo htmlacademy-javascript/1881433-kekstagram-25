@@ -3,9 +3,9 @@ import {getRandomUrl, getRandomLikes, createCommentsArray, getRandomId} from './
 
 const picturesContainer = document.querySelector('.pictures');
 const ulContainer = document.createElement('ul');
-picturesContainer.appendChild(ulContainer);
 const template = document.querySelector('#picture').content;
 const templateContent = template.querySelector('.picture');
+const fragment = document.createDocumentFragment();
 
 const addFeatures = () => {
   for (let i = 0; i < getRandomId(); i++) {
@@ -17,6 +17,8 @@ const addFeatures = () => {
     clonedTemplateContent.querySelector('.picture__likes').innerHTML = getRandomLikes();
     clonedTemplateContent.querySelector('.picture__comments').innerHTML = createCommentsArray().length;
   }
+  fragment.appendChild(ulContainer);
+  picturesContainer.appendChild(fragment);
   return picturesContainer;
 };
 addFeatures();
