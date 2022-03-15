@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import {photos} from './util.js';
-/* eslint-disable no-unused-vars */
+import './miniatures.js';
+//import {photos} from './util.js';
 
 //console.log(photos);
