@@ -660,6 +660,11 @@ main {
  * Блок добавления хэштегов и комментария к изображению
  */
 
+.img-upload__text {
+  text-transform: lowercase;
+  color: #e90000;
+}
+
 .text {
   margin: 0;
   padding: 0;
