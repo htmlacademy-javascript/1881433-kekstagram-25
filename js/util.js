@@ -60,4 +60,6 @@ const createPhoto = () => ({
   comments: createCommentsArray()
 });
 
+export const isEscapeKey = (evt) => evt.key === 'Escape';
+
 export const photos = Array.from({length: getRandomId()}, createPhoto);
