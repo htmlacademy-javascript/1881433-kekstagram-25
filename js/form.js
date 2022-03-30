@@ -1,9 +1,9 @@
 import {isEscapeKey} from './util.js';
 
+const body = document.querySelector('body');
 const initialStateElement = document.querySelector('#upload-file');
 const improveMenu = document.querySelector('.img-upload__overlay');
 const cancelMenuButton = document.querySelector('#upload-cancel');
-const body = document.querySelector('body');
 
 const orderForm = document.querySelector('.img-upload__form');
 const textArea = document.querySelector('.text__description');
@@ -28,6 +28,8 @@ cancelMenuButton.addEventListener('click', (evt) => {
   body.classList.remove('modal-open');
 });
 
+const TEXT_AREA_MAX_LENGTH = 140;
+const MAX_HASHTAGS_COUNT = 5;
 
 const pristine = new Pristine(orderForm, {
   classTo: 'img-upload__text',
@@ -38,24 +40,50 @@ const pristine = new Pristine(orderForm, {
   errorTextClass: 'form__error'
 });
 
-function validateHashtags (value) {
-  return value.length !== 124;
+const hashtagRegexp = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/gm;
+
+function validateHashtag(tag) {
+  hashtagRegexp.lastIndex = 0;
+  return hashtagRegexp.test(tag);
 }
 
+function findDuplicates(array) {
+  const elements = array.map((it) => it.toLowerCase()); // Приводим все к одному регистру
+  return elements.filter((item, index) => elements.indexOf(item) !== index); // Отфильтровываем недублирующиеся элементы
+}
+
+function validateHashtags(value) {
+  const tags = value.trim().split(' ');
+
+  // Проверка максимальной длины
+  if (tags.length > MAX_HASHTAGS_COUNT) {
+    return false;
+  }
+
+  // Проверка на повторение
+  if (findDuplicates(tags).length) {
+    return false;
+  }
+
+
+  return tags.every(validateHashtag);
+}
+
+const hastagsField = orderForm.querySelector('.text__hashtags');
 pristine.addValidator(
-  orderForm.querySelector('.text__hashtags'),
+  hastagsField,
   validateHashtags,
-  'не более 124 символов'
+  'Некорректное значение хэш-тегов'
 );
 
 function validateTextArea (value) {
-  return value.length !== 140;
+  return value.length !== TEXT_AREA_MAX_LENGTH;
 }
 
 pristine.addValidator(
   orderForm.querySelector('.text__description'),
   validateTextArea,
-  'не более 140 символов'
+  'Не более 140 символов'
 );
 
 textArea.addEventListener('keydown', (evt) => {
