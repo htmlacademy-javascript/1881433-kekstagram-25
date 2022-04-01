@@ -798,6 +798,9 @@ main {
   background-color: #ffffff;
 }
 
+.views {
+  list-style-type: none;
+}
 
 /*
  * Подпись к изображению
