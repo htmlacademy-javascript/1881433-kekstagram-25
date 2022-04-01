@@ -1,8 +1,8 @@
 import {getRandomUrl, getRandomLikes, createCommentsArray, getRandomId} from './util.js';
 
-
 const picturesContainer = document.querySelector('.pictures');
 const ulContainer = document.createElement('ul');
+ulContainer.classList.add('views');
 const template = document.querySelector('#picture').content;
 const templateContent = template.querySelector('.picture');
 const fragment = document.createDocumentFragment();
@@ -11,6 +11,7 @@ const addFeatures = () => {
   for (let i = 0; i < getRandomId(); i++) {
     const clonedTemplateContent = templateContent.cloneNode(true);
     const liContainer = document.createElement('li');
+    liContainer.classList.add('view');
     ulContainer.appendChild(liContainer);
     liContainer.appendChild(clonedTemplateContent);
     clonedTemplateContent.querySelector('.picture__img').src = getRandomUrl();
