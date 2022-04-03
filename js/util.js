@@ -24,21 +24,21 @@ export const getRandomId = () => getRandomNumber(MIN_ID, MAX_ID);
 
 export const getRandomUrl = () => `photos/${getRandomNumber(MIN_URL_ID, MAX_URL_ID)}.jpg`;
 
-const getRandomAvatarUrl = () => `img/avatar-${getRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID)}.svg`;
+export const getRandomAvatarUrl = () => `img/avatar-${getRandomNumber(MIN_AVATAR_ID, MAX_AVATAR_ID)}.svg`;
 
-const getRandomDescription = () => {
+export const getRandomDescription = () => {
   const descriptionIndex =  getRandomNumber(0, DESCRIPTIONS.length - 1);
   return DESCRIPTIONS[descriptionIndex];
 };
 
-const getRandomName = () => {
+export const getRandomName = () => {
   const nameIndex =  getRandomNumber(0, NAMES.length - 1);
   return NAMES[nameIndex];
 };
 
 export const getRandomLikes = () => getRandomNumber(MIN_LIKES, MAX_LIKES);
 
-const getRandomMessage = () => {
+export const getRandomMessage = () => {
   const messageIndex =  getRandomNumber(0, MESSAGES.length - 1);
   return MESSAGES[messageIndex];
 };
