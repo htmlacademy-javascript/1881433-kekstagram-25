@@ -52,7 +52,7 @@ export const createCommentsArray = () => {
   return commentsArray;
 };
 
-const createPhoto = () => ({
+export const createPhoto = () => ({
   id: getRandomId(),
   url: getRandomUrl(),
   description: getRandomDescription(),

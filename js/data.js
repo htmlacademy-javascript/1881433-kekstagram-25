@@ -58,3 +58,9 @@ export const NAMES = [
   'Геннадий',  'Виктор',    'Павел',
   'Фёдор'
 ];
+
+export const INITIAL_COMMENT_1 = 1;
+export const INITIAL_COMMENT_2 = 2;
+export const INITIAL_COMMENT_3 = 3;
+export const INITIAL_COMMENT_4 = 4;
+export const INITIAL_COMMENT_5 = 5;

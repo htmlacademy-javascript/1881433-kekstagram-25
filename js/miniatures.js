@@ -1,4 +1,4 @@
-import {getRandomUrl, getRandomLikes, createCommentsArray, getRandomId} from './util.js';
+import {photos} from './util.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const ulContainer = document.createElement('ul');
@@ -8,19 +8,22 @@ const templateContent = template.querySelector('.picture');
 const fragment = document.createDocumentFragment();
 
 const addFeatures = () => {
-  for (let i = 0; i < getRandomId(); i++) {
+  for (let i = 0; i < photos.length; i++) {
+    const photo = photos[i];
     const clonedTemplateContent = templateContent.cloneNode(true);
     const liContainer = document.createElement('li');
     liContainer.classList.add('view');
     ulContainer.appendChild(liContainer);
     liContainer.appendChild(clonedTemplateContent);
-    clonedTemplateContent.querySelector('.picture__img').src = getRandomUrl();
-    clonedTemplateContent.querySelector('.picture__likes').innerHTML = getRandomLikes();
-    clonedTemplateContent.querySelector('.picture__comments').innerHTML = createCommentsArray().length;
+    clonedTemplateContent.querySelector('.picture__img').src = photo.url;
+    clonedTemplateContent.querySelector('.picture__likes').innerHTML = photo.likes;
+    clonedTemplateContent.querySelector('.picture__comments').innerHTML = photo.comments.length;
   }
   fragment.appendChild(ulContainer);
   picturesContainer.appendChild(fragment);
   return picturesContainer;
 };
 addFeatures();
-//console.log(addFeatures());
+
+//console.log(addFeatures(), photos);
+
